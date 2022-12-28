@@ -123,7 +123,12 @@ while line:
     key = line.strip()
     result_title = regex_title.findall(key)    # Extract title and author
     line = mc.readline().strip()                # Read information line
-    note_type, location, date = regex_info.findall(line)[0]    # Extract note type, location and date
+    regex_result = regex_info.findall(line)
+    if len(regex_result) == 0:
+        print('Error: could not parse line', line)
+        continue
+
+    note_type, location, date = regex_result[0]    # Extract note type, location and date
     result_loc = regex_loc.findall(location)
     result_page = regex_page.findall(location)
     if len(result_title):
