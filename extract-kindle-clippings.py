@@ -225,20 +225,19 @@ for key in pub_title.keys():
     out = open(outfile, 'a')
     
     if short:
-        # Short note, output a small header and append to short note file
-        if author != 'Unknown':
-            titlestr = author + ' - ' + title
-        else:
-            titlestr = title
-        out.write(titlestr + '\n')
-        out.write(('-' * len(titlestr)) + '\n\n')
+        out.write('#' + title + '\n')
+        
     elif not newfile:
         # Many notes, output with header and metadata in a separate file
-        titlestr = 'Highlights from ' + title
-        out.write(titlestr + '\n')
-        out.write(('=' * len(titlestr)) + '\n\n')
+        out.write('# ' + title + '\n')
+        
+        out.write('---\n')
+        out.write('aliases: \n')
         if author != 'Unknown':
-            out.write(':authors: ' + author + '\n\n')
+            out.write('author: ' + author + '\n')
+        out.write('tags: \n')
+        out.write('---\n')
+        out.write('[[Books]]\n\n')
             
     last_date = datetime.now()
     
