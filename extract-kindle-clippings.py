@@ -229,7 +229,7 @@ for key in pub_title.keys():
         
     elif not newfile:
         # Many notes, output with header and metadata in a separate file
-        out.write('# ' + title + '\n')
+        
         
         out.write('---\n')
         out.write('aliases: \n')
@@ -238,6 +238,8 @@ for key in pub_title.keys():
         out.write('tags: \n')
         out.write('---\n')
         out.write('[[Books]]\n\n')
+
+        out.write('# ' + title + '\n')
             
     last_date = datetime.now()
     
