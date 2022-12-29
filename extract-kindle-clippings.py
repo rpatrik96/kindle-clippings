@@ -35,7 +35,7 @@ import sys
 if len(sys.argv) > 1:
     infile = sys.argv[1]
 else:
-    infile = 'My Clippings.txt'
+    infile = 'My Clippings - Kindle.txt'
 
 if not os.path.isfile(infile):
     username = getpass.getuser()
@@ -46,7 +46,7 @@ if not os.path.isfile(infile):
 if len(sys.argv) > 2:
     outpath = sys.argv[2]
 else:
-    outpath = 'clippings/'
+    outpath = './'
 
 if not os.path.isdir(outpath):
     # Create output path if it doesn't exist
