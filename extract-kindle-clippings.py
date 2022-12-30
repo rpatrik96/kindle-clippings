@@ -189,7 +189,6 @@ while line:
 mc.close()
     
 for key in pub_title.keys():
-    nr_notes = len(pub_notes[key])
     author = pub_author[key]
     author = author.replace(';',', ')
     title = pub_title[key]
@@ -201,12 +200,7 @@ for key in pub_title.keys():
     short_title = short_title.replace('*','')
     if len(short_title) > 128:
         short_title = short_title[:127]
-    if (nr_notes > 2):
-        fname = short_title.strip() + '.md'
-        short = 0
-    else:
-        fname = 'short_notes.md'
-        short = 1
+
 
     new_hashes = 0
     for note_hash in pub_hashes[key]:
@@ -224,10 +218,8 @@ for key in pub_title.keys():
     
     out = open(outfile, 'a')
     
-    if short:
-        out.write('#' + title + '\n')
         
-    elif not newfile:
+    if not newfile:
         # Many notes, output with header and metadata in a separate file
         
         
@@ -255,8 +247,6 @@ for key in pub_title.keys():
             
             comment = str(commentstr + note_hash + ' ; ' + note_type + ' ; ' + note_loc + ' ; ' + note_date)
             
-            if short:
-                comment += ' ; ' + author + ' ; ' + title
                 
             out.write(comment + '\n\n')
             out.write(note + '\n\n')
