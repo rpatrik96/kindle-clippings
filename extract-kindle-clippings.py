@@ -213,6 +213,7 @@ for key in pub_title.keys():
     if new_hashes > 0:
         print(new_hashes, 'new notes found for', title)
     else:
+        print('No new notes found for', title)
         continue            # Skip to next title if there are no new hashes
     
     outfile = outpath + getvalidfilename(fname)
@@ -270,3 +271,4 @@ for key in pub_title.keys():
     os.utime(outfile, (note_timestamp, note_timestamp))
     
 
+print('Done')
