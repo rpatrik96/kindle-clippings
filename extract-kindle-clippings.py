@@ -88,7 +88,7 @@ for directory, subdirlist, filelist in os.walk(outpath):
     for fname in filelist:
         if fname.startswith("."):
             continue
-        ext = fname[-4:]
+        ext = fname[-3:]
         if ext.lower() == '.md':
             print('Found Markdown file', fname, 'in directory', directory)
             # open file, find commend lines, store hashes
