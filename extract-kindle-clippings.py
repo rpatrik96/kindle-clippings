@@ -68,7 +68,7 @@ regex_loc = re.compile('[Llocation.]+ ([\d\-]+)')
 regex_page = re.compile('[pP]age ([\d\-]+)')
 regex_date = re.compile('Added on\s+(.+)$')
 
-regex_hashline = re.compile('^###\s*([a-fA-F0-9]+)' + '\s*')
+regex_hashline = re.compile('^\#\#\# \s*([a-fA-F0-9]+)' + '\s*')
 
 
 pub_title = {}
