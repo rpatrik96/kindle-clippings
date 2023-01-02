@@ -201,6 +201,9 @@ for key in pub_title.keys():
     if len(short_title) > 128:
         short_title = short_title[:127]
 
+    fname = short_title.strip() + '.md'
+
+
 
     new_hashes = 0
     for note_hash in pub_hashes[key]:
