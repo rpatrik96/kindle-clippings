@@ -123,6 +123,9 @@ while line:
     key = line.strip()
     result_title = regex_title.findall(key)    # Extract title and author
     line = mc.readline().strip()                # Read information line
+    line = re.sub(r'‚Äô', "'", line)            # Replace weird apostrophes
+    line = re.sub(r'‚Äú|‚Äù', '"', line)       # Replace weird quotes
+    line = re.sub(r'‚Äî', '-', line)            # Replace weird dashes
     regex_result = regex_info.findall(line)
     if len(regex_result) == 0:
         print('Error: could not parse line', line)
