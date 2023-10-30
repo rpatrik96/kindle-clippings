@@ -235,7 +235,7 @@ for key in pub_title.keys():
         if author != 'Unknown':
             out.write('author: ' + author + '\n')
         out.write('keywords: [[Books]] \n')
-        out.write('tags: \n')
+        out.write('tags: draft\n')
         out.write('---\n')
                 
         out.write('![[Review of' + title + ']]\n\n')
