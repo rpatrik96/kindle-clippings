@@ -252,7 +252,7 @@ for key in pub_title.keys():
         out.write('[[Books]] \n\n')
 
                 
-        out.write('![[Review of ' + title + ']]\n\n')
+        out.write('![[Review of ' + getvalidfilename(title) + ']]\n\n')
 
         out.write('# ' + title + '\n')
             
