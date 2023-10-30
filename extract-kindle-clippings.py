@@ -245,11 +245,14 @@ for key in pub_title.keys():
         out.write('aliases: \n')
         if author != 'Unknown':
             out.write('author: ' + author + '\n')
-        out.write('keywords: [[Books]] \n')
+        out.write('keywords: \n')
         out.write('tags: draft\n')
         out.write('---\n')
                 
-        out.write('![[Review of' + title + ']]\n\n')
+        out.write('[[Books]] \n\n')
+
+                
+        out.write('![[Review of ' + title + ']]\n\n')
 
         out.write('# ' + title + '\n')
             
