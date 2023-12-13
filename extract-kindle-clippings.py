@@ -31,22 +31,33 @@ import os
 from datetime import datetime, timedelta, timezone
 import getpass
 import sys
+import shutil
 
 if len(sys.argv) > 1:
-    infile = sys.argv[1]
+    source_filename = sys.argv[1]
 else:
-    infile = 'My Clippings - Kindle.txt'
-
-if not os.path.isfile(infile):
     username = getpass.getuser()
-    infile = '/media/' + username + '/Kindle/documents/My Clippings.txt'
-    if not os.path.isfile(infile):
+    source_filename = '/Users/' + username + '/My Drive/Knowledge/Calibre Library/Kindle/My Clippings (295)/My Clippings - Kindle.txt'
+    if not os.path.isfile(source_filename):
         print('Could not find "My Clippings.txt", please provide the file location as an argument\nUsage: ' + sys.argv[0] + ' <clippings file> [<output directory>]\n')
+
+
+drive_filename = '/Users/' + username + '/My Drive/Dokumentumok/Notes/Books/My Clippings.txt'
+git_filename = '/Users/' + username + '/Documents/GitHub/kindle-clippings/My Clippings.txt'
+
+
+
+
+shutil.copyfile(source_filename, git_filename)
+shutil.copyfile(source_filename, drive_filename)
+
+
+
 
 if len(sys.argv) > 2:
     outpath = sys.argv[2]
 else:
-    outpath = './'
+    outpath = '/Users/' + username + '/My Drive/Dokumentumok/Notes/Books/'
 
 if not os.path.isdir(outpath):
     # Create output path if it doesn't exist
@@ -110,9 +121,9 @@ for directory, subdirlist, filelist in os.walk(outpath):
             print('File', fname, 'does not seem to be Markdown, skipping', ext)
 
 print('Found', len(existing_hashes), 'existing note hashes')
-print('Processing clippings file', infile)
+print('Processing clippings file', source_filename)
         
-mc = open(infile, 'r')
+mc = open(source_filename, 'r')
 
 mc.read(1)  # Skip first character
 
@@ -240,8 +251,8 @@ for key in pub_title.keys():
                 
         out.write('[[Books]] \n\n')
 
-        out.write('# Review \n')
-        out.write('![[Review of ' + title + ']]\n\n')
+                
+        out.write('![[Review of ' + getvalidfilename(fname) + ']]\n\n')
 
         out.write('# ' + title + '\n')
             
