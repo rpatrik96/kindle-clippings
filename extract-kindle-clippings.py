@@ -252,6 +252,7 @@ for key in pub_title.keys():
         out.write('[[Books]] \n\n')
 
                 
+        out.write('# Review \n')
         out.write('![[Review of ' + getvalidfilename(fname) + ']]\n\n')
 
         out.write('# ' + title + '\n')
